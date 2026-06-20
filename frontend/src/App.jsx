@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 // API Base Endpoint
-const API_BASE_URL = "http://localhost:5000/api/tasks";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/tasks";
 
 // Custom SVG Icons for modern visual design
 const SearchIcon = () => (
