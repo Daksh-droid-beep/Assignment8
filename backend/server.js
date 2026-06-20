@@ -28,13 +28,14 @@ app.use("*", (req, res) => {
 // Centralized error handling (Must be defined last)
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
-
-const server = app.listen(PORT, () => {
-  console.log(`==================================================`);
-  console.log(`🚀 Task Backend running in ${process.env.NODE_ENV || "development"} mode`);
-  console.log(`📡 URL: http://localhost:${PORT}`);
-  console.log(`==================================================`);
-});
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`==================================================`);
+    console.log(`🚀 Task Backend running in ${process.env.NODE_ENV || "development"} mode`);
+    console.log(`📡 URL: http://localhost:${PORT}`);
+    console.log(`==================================================`);
+  });
+}
 
 module.exports = app;
